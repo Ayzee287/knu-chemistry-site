@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { getDictionary, isLocale } from "@/lib/i18n";
+import { getDepartments } from "@/content/data/departments";
 import { Container } from "@/components/layout/container";
 import { PageIntro } from "@/components/layout/page-intro";
 
@@ -12,22 +13,23 @@ export default async function ResearchPage({
   if (!isLocale(lang)) notFound();
   const dict = getDictionary(lang);
   const t = dict.pages.research;
+  const departments = getDepartments(lang);
 
   return (
     <main className="pb-24 lg:pb-32">
       <PageIntro eyebrow={t.eyebrow} title={t.title} lead={t.lead} />
       <Container>
         <ul className="mt-14 divide-y divide-navy/10 border-y border-navy/10">
-          {dict.areas.items.map((area) => (
+          {departments.map((dept) => (
             <li
-              key={area.name}
+              key={dept.id}
               className="flex flex-col gap-1 py-6 sm:flex-row sm:items-baseline sm:gap-10"
             >
               <span className="font-serif text-2xl text-navy sm:basis-1/3">
-                {area.name}
+                {dept.name}
               </span>
               <span className="flex-1 text-sm leading-6 text-slate">
-                {area.desc}
+                {dept.research}
               </span>
             </li>
           ))}

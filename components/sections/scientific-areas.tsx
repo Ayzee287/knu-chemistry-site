@@ -1,4 +1,5 @@
 import { Container } from "@/components/layout/container";
+import { getDepartments } from "@/content/data/departments";
 import { href, type Locale, type Dictionary } from "@/lib/i18n";
 
 const NUMERAL = ["I", "II", "III", "IV", "V"];
@@ -12,6 +13,7 @@ export function ScientificAreas({
   dict: Dictionary;
 }) {
   const t = dict.areas;
+  const departments = getDepartments(lang);
   return (
     <section className="py-20 sm:py-24 lg:py-28">
       <Container>
@@ -33,8 +35,8 @@ export function ScientificAreas({
         </div>
 
         <ul className="mt-12 divide-y divide-navy/10 border-y border-navy/10">
-          {t.items.map((area, i) => (
-            <li key={area.name}>
+          {departments.map((dept, i) => (
+            <li key={dept.id}>
               <a
                 href={href(lang, "/departments")}
                 className="group -mx-4 flex flex-col gap-1 rounded-sm px-4 py-6 transition-colors hover:bg-navy/[0.03] sm:flex-row sm:items-baseline sm:gap-8"
@@ -43,10 +45,10 @@ export function ScientificAreas({
                   {NUMERAL[i]}
                 </span>
                 <span className="font-serif text-2xl text-navy sm:basis-[32%] sm:text-3xl">
-                  {area.name}
+                  {dept.name}
                 </span>
                 <span className="flex-1 text-sm leading-6 text-slate">
-                  {area.desc}
+                  {dept.research}
                 </span>
                 <span
                   aria-hidden

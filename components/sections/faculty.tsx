@@ -1,14 +1,16 @@
 import { Container } from "@/components/layout/container";
 import { Figure } from "@/components/ui/figure";
+import { getDepartments } from "@/content/data/departments";
 import { href, type Locale, type Dictionary } from "@/lib/i18n";
 
 /**
  * Institutional hierarchy: a representative Dean block (leadership anchor),
  * then the five department heads as structurally EQUAL peers — no featured
- * favouritism. Portrait plates await real photography.
+ * favouritism. Department data comes from the single source of truth.
  */
 export function Faculty({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const t = dict.faculty;
+  const departments = getDepartments(lang);
   return (
     <section className="bg-sand py-20 sm:py-24 lg:py-28">
       <Container>
@@ -47,14 +49,18 @@ export function Faculty({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 
         {/* Department heads — equal hierarchy, equal visual mass */}
         <ul className="mt-12 grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-3 lg:grid-cols-5">
-          {t.heads.map((head) => (
-            <li key={head.dept}>
-              <Figure caption={head.dept} ratio="aspect-[4/5]" />
+          {departments.map((dept) => (
+            <li key={dept.id}>
+              <Figure caption={dept.name} ratio="aspect-[4/5]" />
               <p className="mt-4 text-xs uppercase tracking-[0.16em] text-slate">
                 {dict.ui.headOfDepartment}
               </p>
-              <h3 className="mt-1 font-serif text-lg text-navy">{head.name}</h3>
-              <p className="mt-1 text-sm leading-5 text-slate">{head.title}</p>
+              <h3 className="mt-1 font-serif text-lg text-navy">
+                {dept.head.name}
+              </h3>
+              <p className="mt-1 text-sm leading-5 text-slate">
+                {dept.head.title}
+              </p>
             </li>
           ))}
         </ul>

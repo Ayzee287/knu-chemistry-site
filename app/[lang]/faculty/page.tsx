@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { getDictionary, isLocale } from "@/lib/i18n";
+import { getDepartments } from "@/content/data/departments";
 import { Container } from "@/components/layout/container";
 import { PageIntro } from "@/components/layout/page-intro";
 import { Figure } from "@/components/ui/figure";
@@ -13,6 +14,7 @@ export default async function FacultyPage({
   if (!isLocale(lang)) notFound();
   const dict = getDictionary(lang);
   const t = dict.pages.faculty;
+  const departments = getDepartments(lang);
 
   return (
     <main className="pb-24 lg:pb-32">
@@ -39,14 +41,18 @@ export default async function FacultyPage({
           {dict.faculty.title}
         </h2>
         <ul className="mt-8 grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-3 lg:grid-cols-5">
-          {dict.faculty.heads.map((head) => (
-            <li key={head.dept}>
-              <Figure caption={head.dept} ratio="aspect-[4/5]" />
+          {departments.map((dept) => (
+            <li key={dept.id}>
+              <Figure caption={dept.name} ratio="aspect-[4/5]" />
               <p className="mt-4 text-xs uppercase tracking-[0.16em] text-slate">
                 {dict.ui.headOfDepartment}
               </p>
-              <h3 className="mt-1 font-serif text-lg text-navy">{head.name}</h3>
-              <p className="mt-1 text-sm leading-5 text-slate">{head.title}</p>
+              <h3 className="mt-1 font-serif text-lg text-navy">
+                {dept.head.name}
+              </h3>
+              <p className="mt-1 text-sm leading-5 text-slate">
+                {dept.head.title}
+              </p>
             </li>
           ))}
         </ul>
