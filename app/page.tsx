@@ -1,9 +1,7 @@
-import { Hero } from "@/components/layout/hero";
+import { redirect } from "next/navigation";
+import { defaultLocale } from "@/lib/i18n";
 
-export default function Home() {
-  return (
-    <main>
-      <Hero />
-    </main>
-  );
+// Ukrainian-first: the bare root sends visitors to the default locale.
+export default function RootPage() {
+  redirect(`/${defaultLocale}`);
 }

@@ -1,12 +1,35 @@
 @import "tailwindcss";
 
-:root {
-  --background: #000000;
-  --foreground: #ffffff;
+/* Minimal token layer. ivory = institutional paper tone; sand = the single warm
+   tonal anchor. Serif chains Cormorant (Latin) → Lora (Cyrillic) so Ukrainian
+   headings render correctly; Inter (Latin + Cyrillic) carries body text. */
+@theme {
+  --color-navy: #14254a;
+  --color-ivory: #f4f0e8;
+  --color-sand: #e8e0d0;
+  --color-gold: #c9a227;
+  --color-slate: #5a6275;
+
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), var(--font-lora), Georgia, serif;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* One consistent, restrained focus treatment across all interactive elements. */
+  a:focus-visible,
+  summary:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--color-navy);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-navy);
+    color: var(--color-ivory);
+  }
 }
