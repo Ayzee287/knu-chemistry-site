@@ -163,12 +163,3 @@ Human judgment remains responsible for:
 - AI-assisted architecture iteration
 
 ---
-
-## Architecture Overview
-
-### Routing
-
-The application uses locale-based routing:
-
-`txt
-/app/[lang]
