@@ -1,36 +1,174 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# KNU Chemistry
 
-## Getting Started
+AI-assisted institutional redesign and digital infrastructure project for the Faculty of Chemistry at Taras Shevchenko National University of Kyiv.
 
-First, run the development server:
+This project explores how modern academic institutions can be rebuilt through:
+- content-first architecture
+- restrained editorial design
+- bilingual infrastructure
+- AI-assisted development workflows
+- documentation-driven systems thinking
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The goal is not to create a “startup-style university website”.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The goal is to build:
+a calm, credible, scalable digital academic institution.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Overview
 
-## Learn More
+KNU Chemistry is a long-term institutional frontend and infrastructure initiative focused on rebuilding the digital presence of the Faculty of Chemistry at Taras Shevchenko National University of Kyiv.
 
-To learn more about Next.js, take a look at the following resources:
+The project combines:
+- Next.js frontend architecture
+- institutional UI systems
+- bilingual content infrastructure
+- Obsidian-based knowledge architecture
+- AI-assisted implementation workflows
+- documentation-first development
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The system is intentionally:
+- static-first
+- content-driven
+- academically restrained
+- operationally scalable
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Mission
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Most university websites suffer from:
+- fragmented structure
+- outdated UX
+- visual noise
+- inconsistent content
+- weak information architecture
+- poor multilingual support
+- template-driven design
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project exists to explore an alternative approach:
+a digital academic system designed with the same seriousness as institutional publishing.
+
+Core priorities:
+- clarity
+- longevity
+- maintainability
+- institutional realism
+- editorial restraint
+- scalable architecture
+- bilingual integrity
+
+---
+
+## Current Status
+
+The project has already crossed:
+- concept phase
+- visual identity exploration
+- homepage architecture phase
+- bilingual infrastructure implementation
+- institutional routing system implementation
+
+Current implementation includes:
+- bilingual UA/EN routing
+- typed content architecture
+- institutional navigation system
+- editorial visual system
+- responsive layouts
+- static route ecosystem
+- faculty hierarchy system
+- scalable section architecture
+- Obsidian documentation infrastructure
+
+The project is currently transitioning from:
+prototype exploration → operational maturity.
+
+---
+
+## Core Principles
+
+### Content First
+
+The system is built around institutional content, not visual effects.
+
+Typography, spacing, composition, and hierarchy exist to support:
+research, faculty, departments, and academic identity.
+
+---
+
+### Institutional Realism
+
+The project avoids:
+- startup aesthetics
+- dashboard UI patterns
+- overdesigned interactions
+- artificial branding language
+- excessive animations
+- “AI-generated sophistication”
+
+The interface should feel:
+quiet, academic, structured, and authored.
+
+---
+
+### Editorial Restraint
+
+The visual system intentionally uses:
+- limited color vocabulary
+- restrained serif typography
+- calm spacing systems
+- documentary composition logic
+- minimal decorative behavior
+
+The goal is not spectacle.
+The goal is credibility.
+
+---
+
+### AI-Assisted, Human-Directed
+
+AI is used as:
+- implementation support
+- architectural critique
+- workflow acceleration
+- documentation assistance
+
+Human judgment remains responsible for:
+- direction
+- editorial quality
+- institutional tone
+- system coherence
+- final decisions
+
+---
+
+## Technology Stack
+
+### Frontend
+- Next.js
+- TypeScript
+- Tailwind CSS v4
+- App Router
+- Static-first architecture
+
+### Infrastructure
+- GitHub
+- Vercel
+- Obsidian knowledge system
+
+### Workflow
+- Claude Code
+- ChatGPT Projects
+- AI-assisted architecture iteration
+
+---
+
+## Architecture Overview
+
+### Routing
+
+The application uses locale-based routing:
+
+`txt
+/app/[lang]
