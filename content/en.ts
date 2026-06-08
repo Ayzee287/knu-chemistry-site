@@ -69,28 +69,6 @@ export const en = {
     eyebrow: "Scientific areas",
     title: "Five departments of chemistry",
     all: "All research areas",
-    items: [
-      {
-        name: "Inorganic Chemistry",
-        desc: "Coordination compounds, materials, and the chemistry of the elements.",
-      },
-      {
-        name: "Organic Chemistry",
-        desc: "Synthesis, mechanisms, and the chemistry of natural compounds.",
-      },
-      {
-        name: "Analytical Chemistry",
-        desc: "Analytical methods and chemical control of environmental objects.",
-      },
-      {
-        name: "Physical Chemistry",
-        desc: "Thermodynamics, kinetics, and the physical chemistry of interfacial phenomena.",
-      },
-      {
-        name: "Macromolecular Chemistry",
-        desc: "Synthesis and study of macromolecular and high-molecular compounds.",
-      },
-    ],
   },
 
   programs: {
@@ -146,13 +124,6 @@ export const en = {
     all: "All faculty",
     deanNote:
       "The Dean’s Office leads the faculty’s academic and scientific work and represents it within the University and internationally.",
-    heads: [
-      { dept: "Inorganic Chemistry", name: "R. D. Lampeka", title: "Professor, Dr. Sc." },
-      { dept: "Organic Chemistry", name: "O. O. Hryhorenko", title: "Professor, Dr. Sc." },
-      { dept: "Analytical Chemistry", name: "O. Yu. Tananaiko", title: "Associate Professor, Dr. Sc." },
-      { dept: "Physical Chemistry", name: "I. O. Fritsky", title: "Professor · Corr. Member, NAS of Ukraine" },
-      { dept: "Macromolecular Chemistry", name: "I. O. Savchenko", title: "Professor, Dr. Sc." },
-    ],
   },
 
   news: {
