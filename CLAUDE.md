@@ -584,6 +584,45 @@ Every decision should optimize for:
 - operational stability
 - long-term scalability
 
+## Git & Branch Discipline (Mandatory)
+
+Never work directly on `main`.
+
+All substantial work must happen in dedicated branches.
+
+Examples:
+
+* `responsive-pass`
+* `content-ingestion`
+* `faculty-architecture`
+* `deployment-hardening`
+
+Workflow:
+
+1. Create branch
+2. Implement scoped task
+3. Validate build
+4. Commit cleanly
+5. Push branch
+6. Verify branch exists on GitHub
+7. Only then continue or open the next operational chat
+
+When pushing a new branch for the first time:
+
+```bash
+git push --set-upstream origin <branch-name>
+```
+
+Do not leave unpushed local-only work.
+
+Do not mix unrelated tasks in one branch.
+
+One branch = one operational objective.
+
+Do not use `main` as a scratch workspace.
+
+
+
 Restraint is a feature.
 
 Discipline is part of the design system.
