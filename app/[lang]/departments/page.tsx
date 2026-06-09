@@ -46,11 +46,18 @@ export default async function DepartmentsPage({
                 <p className="mt-3 text-xs uppercase tracking-[0.16em] text-slate">
                   {dict.ui.headOfDepartment}
                 </p>
-                <p className="mt-1 text-sm text-navy/80">{dept.head.name}</p>
-                <p className="text-sm text-slate">
-                  {dept.head.title}
-                  <ReviewMark provenance={dept.head.provenance} />
+                <p className="mt-1 text-sm text-navy/80">
+                  {dept.head.name}
+                  {!dept.head.title && (
+                    <ReviewMark provenance={dept.head.provenance} />
+                  )}
                 </p>
+                {dept.head.title && (
+                  <p className="text-sm text-slate">
+                    {dept.head.title}
+                    <ReviewMark provenance={dept.head.provenance} />
+                  </p>
+                )}
               </div>
               <p className="max-w-xl text-pretty text-base leading-7 text-slate">
                 {dept.research}

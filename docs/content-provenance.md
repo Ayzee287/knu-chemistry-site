@@ -106,25 +106,34 @@ All items below are `sourced` from chem.knu.ua and **await independent verificat
 
 - The five department heads — names, titles and current posts
   ([`departments.ts`](../content/data/departments.ts)).
+  - **Not published while unverified.** Because the reviewer marker is stripped
+    from production, a `sourced` head would otherwise ship to the public as
+    unqualified fact. `getDepartments()` therefore renders an honest placeholder
+    ("Name to be confirmed", no title) for any head that is not `verified`. The
+    sourced candidate name/title stay in `departments.ts` only as this backlog
+    record; flip a head to `verified(...)` to publish it.
   - Analytical chemistry: the `доцент` (Associate Professor) + `д.х.н.` (Dr. Sc.)
     rank pairing is unusual — confirm.
   - Physical chemistry: "Corr. Member, NAS of Ukraine" is a hard honour claim —
     confirm against the NAS register.
 - Postal address — confirm building number and postal index; the street was
   renamed from Lva Tolstoho ([`contacts.ts`](../content/data/contacts.ts)).
-- Faculty email and phone.
+  Still rendered publicly (low-stakes, `sourced`); not withheld.
+- Faculty email and phone — still rendered publicly (`sourced`).
 
 Known **placeholder**: the Dean's name (`deanNamePending`). Honest gap, not a claim.
 
 ---
 
-## Out of scope here (separately flagged)
+## Resolved fabrication risks
 
-Two content areas were identified as **fabrication risk** and are *not* covered by
-this provenance pass — they should be quarantined next:
+Two content areas were identified as **fabrication risk** and have since been
+quarantined to honest placeholders (verified absent from the production build):
 
-- **News** (`news` in `en.ts`/`ua.ts`) — invented dated events.
-- **Laboratories** (`labs`) — named labs that may not exist.
+- **News** (`news` in `en.ts`/`ua.ts`) — invented dated events (Feb–May 2026
+  seminars/sessions) removed; now an honest "will be published here" placeholder.
+- **Laboratories** (`labs`) — invented named labs removed; the general editorial
+  lead is kept with a "listed as confirmed" note. No named facility is claimed.
 
-These currently render as if real. They should be reduced to honest placeholders
-or removed until backed by sourced content.
+Because `Dictionary = typeof en`, the deleted `news.items` / `labs.items` shapes
+can no longer typecheck back into existence — regression is structurally blocked.
