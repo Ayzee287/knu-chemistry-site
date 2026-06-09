@@ -9,18 +9,13 @@
 //   unverifiedItems().forEach((i) => console.warn(`NEEDS_VERIFICATION: ${i.area}/${i.id}.${i.field}`));
 
 import { departments } from "./departments";
-import type { Provenance } from "./provenance";
 
 export type VerificationItem = {
-  /** Content area, e.g. "departments". */
   area: string;
-  /** Stable id within the area, e.g. "inorganic". */
   id: string;
-  /** Which field the provenance covers, e.g. "head". */
   field: string;
-  /** Canonical (EN) value, for reference in audit output. */
   value: string;
-  provenance: Provenance;
+  provenance: unknown;
 };
 
 /** Every provenance-tracked fact across structured content. */
@@ -30,15 +25,17 @@ export function contentVerificationReport(): VerificationItem[] {
       area: "departments",
       id: d.id,
       field: "head",
-      value: `${d.head.name.en} — ${d.head.title.en}`,
-      provenance: d.head.verification,
+      value: `${d.head.value.name.en} — ${d.head.value.title.en}`,
+      provenance: d.head.provenance,
     })),
   ];
 }
 
 /** Only the facts that still need a human to confirm before publication. */
 export function unverifiedItems(): VerificationItem[] {
-  return contentVerificationReport().filter((i) => !i.provenance.verified);
+  return contentVerificationReport().filter(
+    (i) => !(i.provenance as any)?.verified,
+  );
 }
 
 /** Quick health number for dashboards / reports. */
@@ -48,6 +45,14 @@ export function verificationSummary(): {
   unverified: number;
 } {
   const all = contentVerificationReport();
-  const verified = all.filter((i) => i.provenance.verified).length;
-  return { total: all.length, verified, unverified: all.length - verified };
+
+  const verified = all.filter(
+    (i) => (i.provenance as any)?.verified,
+  ).length;
+
+  return {
+    total: all.length,
+    verified,
+    unverified: all.length - verified,
+  };
 }

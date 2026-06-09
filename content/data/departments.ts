@@ -1,5 +1,5 @@
 import type { Locale } from "@/lib/i18n";
-<<<<<<< HEAD
+
 import {
   claim,
   editorial,
@@ -8,25 +8,15 @@ import {
   type Localised,
   type Provenance,
 } from "@/lib/provenance";
-=======
-import { unverified, type Provenance } from "./provenance";
->>>>>>> deployment-hardening
 
 // Single source of truth for the five departments — language-neutral structure
 // with localised fields. Replaces the duplicated faculty/areas data that
 // previously lived in both en.ts and ua.ts (translation-drift risk).
 //
-<<<<<<< HEAD
 // Department names and research framing are editorial/structural. Leadership
 // (head name + title) is a discrete factual claim: it is sourced from the
 // faculty's published structure (chem.knu.ua) and carries provenance so it
 // stays traceable and is not published as settled truth before verification.
-=======
-// Leadership data is sourced from the faculty's published structure (chem.knu.ua)
-// and MUST be verified against current leadership before publication. Each head
-// carries a Provenance record (see ./provenance and ./verification) so unverified
-// facts are tracked, not silently published as authoritative.
->>>>>>> deployment-hardening
 
 type Leadership = { name: Localised; title: Localised };
 
@@ -34,27 +24,13 @@ export type Department = {
   id: string;
   name: Localised;
   research: Localised;
-<<<<<<< HEAD
-  /** The naming/framing of this department as published. */
   provenance: Provenance;
-  /** Head of department — a sourced, not-yet-verified factual claim. */
   head: Claim<Leadership>;
 };
 
 // Leadership sourced from chem.knu.ua's published structure. Verify each name,
 // title and current post against the faculty before treating as authoritative.
 const leadershipNote = "Verify current post-holder, title and academic rank.";
-=======
-  head: { name: Localised; title: Localised; verification: Provenance };
-};
-
-// Leadership names/titles are sourced but not yet human-confirmed.
-const LEADERSHIP_PROVENANCE: Provenance = unverified(
-  "chem.knu.ua",
-  "2026-06-09",
-  "Department head and title can change between academic years — confirm against the faculty's current published structure before publication.",
-);
->>>>>>> deployment-hardening
 
 export const departments: Department[] = [
   {
@@ -64,7 +40,6 @@ export const departments: Department[] = [
       ua: "Координаційні сполуки, матеріали та хімія елементів.",
       en: "Coordination compounds, materials, and the chemistry of the elements.",
     },
-<<<<<<< HEAD
     provenance: editorial(),
     head: claim(
       {
@@ -73,13 +48,6 @@ export const departments: Department[] = [
       },
       fromChemKnu(leadershipNote),
     ),
-=======
-    head: {
-      name: { ua: "Р. Д. Лампека", en: "R. D. Lampeka" },
-      title: { ua: "професор, д.х.н.", en: "Professor, Dr. Sc." },
-      verification: LEADERSHIP_PROVENANCE,
-    },
->>>>>>> deployment-hardening
   },
   {
     id: "organic",
@@ -88,7 +56,6 @@ export const departments: Department[] = [
       ua: "Синтез, механізми та хімія природних сполук.",
       en: "Synthesis, mechanisms, and the chemistry of natural compounds.",
     },
-<<<<<<< HEAD
     provenance: editorial(),
     head: claim(
       {
@@ -97,13 +64,6 @@ export const departments: Department[] = [
       },
       fromChemKnu(leadershipNote),
     ),
-=======
-    head: {
-      name: { ua: "О. О. Григоренко", en: "O. O. Hryhorenko" },
-      title: { ua: "професор, д.х.н.", en: "Professor, Dr. Sc." },
-      verification: LEADERSHIP_PROVENANCE,
-    },
->>>>>>> deployment-hardening
   },
   {
     id: "analytical",
@@ -112,7 +72,6 @@ export const departments: Department[] = [
       ua: "Аналітичні методи та хімічний контроль об’єктів довкілля.",
       en: "Analytical methods and chemical control of environmental objects.",
     },
-<<<<<<< HEAD
     provenance: editorial(),
     head: claim(
       {
@@ -121,13 +80,6 @@ export const departments: Department[] = [
       },
       fromChemKnu(`${leadershipNote} Rank "доцент / д.х.н." pairing is unusual — confirm.`),
     ),
-=======
-    head: {
-      name: { ua: "О. Ю. Тананайко", en: "O. Yu. Tananaiko" },
-      title: { ua: "доцент, д.х.н.", en: "Associate Professor, Dr. Sc." },
-      verification: LEADERSHIP_PROVENANCE,
-    },
->>>>>>> deployment-hardening
   },
   {
     id: "physical",
@@ -145,15 +97,10 @@ export const departments: Department[] = [
           en: "Professor · Corr. Member, NAS of Ukraine",
         },
       },
-<<<<<<< HEAD
       fromChemKnu(
         `${leadershipNote} "Corr. Member, NAS of Ukraine" is a hard honour claim — confirm against the NAS register.`,
       ),
     ),
-=======
-      verification: LEADERSHIP_PROVENANCE,
-    },
->>>>>>> deployment-hardening
   },
   {
     id: "macromolecular",
@@ -162,7 +109,6 @@ export const departments: Department[] = [
       ua: "Синтез і дослідження високомолекулярних сполук.",
       en: "Synthesis and study of macromolecular and high-molecular compounds.",
     },
-<<<<<<< HEAD
     provenance: editorial(),
     head: claim(
       {
@@ -171,13 +117,6 @@ export const departments: Department[] = [
       },
       fromChemKnu(leadershipNote),
     ),
-=======
-    head: {
-      name: { ua: "І. О. Савченко", en: "I. O. Savchenko" },
-      title: { ua: "професор, д.х.н.", en: "Professor, Dr. Sc." },
-      verification: LEADERSHIP_PROVENANCE,
-    },
->>>>>>> deployment-hardening
   },
 ];
 
@@ -185,12 +124,8 @@ export type LocalisedDepartment = {
   id: string;
   name: string;
   research: string;
-<<<<<<< HEAD
   provenance: Provenance;
   head: { name: string; title: string; provenance: Provenance };
-=======
-  head: { name: string; title: string; verification: Provenance };
->>>>>>> deployment-hardening
 };
 
 export function getDepartments(lang: Locale): LocalisedDepartment[] {
@@ -198,18 +133,11 @@ export function getDepartments(lang: Locale): LocalisedDepartment[] {
     id: d.id,
     name: d.name[lang],
     research: d.research[lang],
-<<<<<<< HEAD
     provenance: d.provenance,
     head: {
       name: d.head.value.name[lang],
       title: d.head.value.title[lang],
       provenance: d.head.provenance,
-=======
-    head: {
-      name: d.head.name[lang],
-      title: d.head.title[lang],
-      verification: d.head.verification,
->>>>>>> deployment-hardening
     },
   }));
 }

@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-<<<<<<< HEAD
-import { getDictionary, isLocale } from "@/lib/i18n";
-import { getContact } from "@/content/data/contacts";
-=======
-import { getDictionary, isLocale, defaultLocale } from "@/lib/i18n";
-import { buildMetadata } from "@/lib/seo";
->>>>>>> deployment-hardening
+
+import { Container } from "@/components/layout/container";
+import { PageIntro } from "@/components/layout/page-intro";
+import { ReviewMark } from "@/components/ui/review-mark";
+
 import { getDictionary, isLocale, defaultLocale } from "@/lib/i18n";
 import { getContact } from "@/content/data/contacts";
 import { buildMetadata } from "@/lib/seo";
