@@ -1,5 +1,7 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getDictionary, isLocale } from "@/lib/i18n";
+import { getDictionary, isLocale, defaultLocale } from "@/lib/i18n";
+import { buildMetadata } from "@/lib/seo";
 import { getDepartments } from "@/content/data/departments";
 import { placeholder } from "@/lib/provenance";
 import { Container } from "@/components/layout/container";
@@ -8,6 +10,17 @@ import { Figure } from "@/components/ui/figure";
 import { ReviewMark } from "@/components/ui/review-mark";
 
 const DEAN_PENDING = placeholder("Dean name pending confirmation.");
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  const loc = isLocale(lang) ? lang : defaultLocale;
+  const t = getDictionary(loc).pages.faculty;
+  return buildMetadata({ lang: loc, path: "/faculty", title: t.title, description: t.lead });
+}
 
 export default async function FacultyPage({
   params,

@@ -5,6 +5,11 @@ export const locales = ["ua", "en"] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = "ua";
 
+// Locale facts used by SEO output (canonical/hreflang/OpenGraph and the sitemap).
+// The route segment is "ua" but the language is Ukrainian → ISO 639-1 "uk".
+export const hreflang: Record<Locale, string> = { ua: "uk", en: "en" };
+export const ogLocale: Record<Locale, string> = { ua: "uk_UA", en: "en_US" };
+
 // English is the canonical shape; Ukrainian is type-checked against it for parity.
 export type Dictionary = typeof en;
 

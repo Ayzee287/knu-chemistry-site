@@ -1,5 +1,7 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getDictionary, isLocale } from "@/lib/i18n";
+import { getDictionary, isLocale, defaultLocale } from "@/lib/i18n";
+import { buildMetadata } from "@/lib/seo";
 import { Hero } from "@/components/layout/hero";
 import { ResearchHighlight } from "@/components/sections/research-highlight";
 import { ScientificAreas } from "@/components/sections/scientific-areas";
@@ -8,6 +10,23 @@ import { Laboratories } from "@/components/sections/laboratories";
 import { Faculty } from "@/components/sections/faculty";
 import { News } from "@/components/sections/news";
 import { Admissions } from "@/components/sections/admissions";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  const loc = isLocale(lang) ? lang : defaultLocale;
+  const dict = getDictionary(loc);
+  return buildMetadata({
+    lang: loc,
+    path: "",
+    title: dict.meta.title,
+    description: dict.meta.description,
+    absoluteTitle: true,
+  });
+}
 
 export default async function HomePage({
   params,

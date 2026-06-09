@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter, Lora } from "next/font/google";
+import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
 // Serif (Latin) — editorial identity for English headings.
@@ -25,8 +26,17 @@ const inter = Inter({
   display: "swap",
 });
 
+// `metadataBase` is set once here so every page can declare canonical / hreflang /
+// OpenGraph URLs as relative paths that resolve against the real production origin.
+// `title.template` gives sub-pages a consistent "<page> — KNU Chemistry" suffix;
+// the home page opts out via `title.absolute`.
 export const metadata: Metadata = {
-  title: "Faculty of Chemistry — Taras Shevchenko National University of Kyiv",
+  metadataBase: siteUrl,
+  title: {
+    default:
+      "Faculty of Chemistry — Taras Shevchenko National University of Kyiv",
+    template: "%s — KNU Chemistry",
+  },
   description:
     "The Faculty of Chemistry at Taras Shevchenko National University of Kyiv.",
 };
