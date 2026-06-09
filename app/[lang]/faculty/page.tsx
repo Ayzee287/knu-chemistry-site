@@ -67,11 +67,16 @@ export default async function FacultyPage({
               </p>
               <h3 className="mt-1 font-serif text-lg text-navy">
                 {dept.head.name}
+                {!dept.head.title && (
+                  <ReviewMark provenance={dept.head.provenance} />
+                )}
               </h3>
-              <p className="mt-1 text-sm leading-5 text-slate">
-                {dept.head.title}
-                <ReviewMark provenance={dept.head.provenance} />
-              </p>
+              {dept.head.title && (
+                <p className="mt-1 text-sm leading-5 text-slate">
+                  {dept.head.title}
+                  <ReviewMark provenance={dept.head.provenance} />
+                </p>
+              )}
             </li>
           ))}
         </ul>
