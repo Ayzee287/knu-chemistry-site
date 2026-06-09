@@ -167,9 +167,7 @@ export const en = {
   footer: {
     facultyName: "Faculty of Chemistry",
     university: "Taras Shevchenko National University of Kyiv",
-    addressLines: ["12 Hetmana Skoropadskoho St", "Kyiv 01033, Ukraine"],
-    email: "chem@knu.ua",
-    phone: "+38 (044) 239-33-58",
+    // Contact facts live in content/data/contacts.ts (provenance-tracked).
     columns: [
       {
         title: "Research",

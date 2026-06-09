@@ -1,9 +1,13 @@
 import { notFound } from "next/navigation";
 import { getDictionary, isLocale } from "@/lib/i18n";
 import { getDepartments } from "@/content/data/departments";
+import { placeholder } from "@/lib/provenance";
 import { Container } from "@/components/layout/container";
 import { PageIntro } from "@/components/layout/page-intro";
 import { Figure } from "@/components/ui/figure";
+import { ReviewMark } from "@/components/ui/review-mark";
+
+const DEAN_PENDING = placeholder("Dean name pending confirmation.");
 
 export default async function FacultyPage({
   params,
@@ -29,6 +33,7 @@ export default async function FacultyPage({
             </p>
             <p className="mt-3 font-serif text-2xl italic text-navy/60">
               {dict.ui.deanNamePending}
+              <ReviewMark provenance={DEAN_PENDING} />
             </p>
             <p className="mt-4 max-w-md text-pretty text-base leading-7 text-slate">
               {dict.faculty.deanNote}
@@ -52,6 +57,7 @@ export default async function FacultyPage({
               </h3>
               <p className="mt-1 text-sm leading-5 text-slate">
                 {dept.head.title}
+                <ReviewMark provenance={dept.head.provenance} />
               </p>
             </li>
           ))}

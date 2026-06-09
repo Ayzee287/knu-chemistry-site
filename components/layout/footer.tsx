@@ -1,8 +1,11 @@
 import { Container } from "@/components/layout/container";
+import { ReviewMark } from "@/components/ui/review-mark";
+import { getContact } from "@/content/data/contacts";
 import { href, type Locale, type Dictionary } from "@/lib/i18n";
 
 export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const t = dict.footer;
+  const contact = getContact(lang);
   return (
     <footer className="border-t border-navy/10 bg-ivory">
       <Container>
@@ -13,18 +16,25 @@ export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               {t.university}
             </p>
             <address className="mt-5 text-sm not-italic leading-6 text-slate">
-              {t.addressLines.map((line) => (
+              {contact.address.value.map((line, i) => (
                 <span key={line} className="block">
                   {line}
+                  {i === contact.address.value.length - 1 && (
+                    <ReviewMark provenance={contact.address.provenance} />
+                  )}
                 </span>
               ))}
               <a
-                href={`mailto:${t.email}`}
+                href={`mailto:${contact.email.value}`}
                 className="mt-1 block transition-colors hover:text-navy"
               >
-                {t.email}
+                {contact.email.value}
               </a>
-              <span className="block">{t.phone}</span>
+              <ReviewMark provenance={contact.email.provenance} />
+              <span className="block">
+                {contact.phone.value}
+                <ReviewMark provenance={contact.phone.provenance} />
+              </span>
             </address>
           </div>
 

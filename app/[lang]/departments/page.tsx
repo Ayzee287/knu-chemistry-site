@@ -3,6 +3,7 @@ import { getDictionary, isLocale } from "@/lib/i18n";
 import { getDepartments } from "@/content/data/departments";
 import { Container } from "@/components/layout/container";
 import { PageIntro } from "@/components/layout/page-intro";
+import { ReviewMark } from "@/components/ui/review-mark";
 
 export default async function DepartmentsPage({
   params,
@@ -33,7 +34,10 @@ export default async function DepartmentsPage({
                   {dict.ui.headOfDepartment}
                 </p>
                 <p className="mt-1 text-sm text-navy/80">{dept.head.name}</p>
-                <p className="text-sm text-slate">{dept.head.title}</p>
+                <p className="text-sm text-slate">
+                  {dept.head.title}
+                  <ReviewMark provenance={dept.head.provenance} />
+                </p>
               </div>
               <p className="max-w-xl text-pretty text-base leading-7 text-slate">
                 {dept.research}

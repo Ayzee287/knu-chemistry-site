@@ -1,7 +1,11 @@
 import { Container } from "@/components/layout/container";
 import { Figure } from "@/components/ui/figure";
+import { ReviewMark } from "@/components/ui/review-mark";
 import { getDepartments } from "@/content/data/departments";
+import { placeholder } from "@/lib/provenance";
 import { href, type Locale, type Dictionary } from "@/lib/i18n";
+
+const DEAN_PENDING = placeholder("Dean name pending confirmation.");
 
 /**
  * Institutional hierarchy: a representative Dean block (leadership anchor),
@@ -40,6 +44,7 @@ export function Faculty({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             </p>
             <h3 className="mt-3 font-serif text-3xl italic text-navy/60">
               {dict.ui.deanNamePending}
+              <ReviewMark provenance={DEAN_PENDING} />
             </h3>
             <p className="mt-5 max-w-md text-pretty text-base leading-7 text-slate">
               {t.deanNote}
@@ -60,6 +65,7 @@ export function Faculty({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               </h3>
               <p className="mt-1 text-sm leading-5 text-slate">
                 {dept.head.title}
+                <ReviewMark provenance={dept.head.provenance} />
               </p>
             </li>
           ))}

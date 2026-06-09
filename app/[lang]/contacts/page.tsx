@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
 import { getDictionary, isLocale } from "@/lib/i18n";
+import { getContact } from "@/content/data/contacts";
 import { Container } from "@/components/layout/container";
 import { PageIntro } from "@/components/layout/page-intro";
+import { ReviewMark } from "@/components/ui/review-mark";
 
 export default async function ContactsPage({
   params,
@@ -13,6 +15,7 @@ export default async function ContactsPage({
   const dict = getDictionary(lang);
   const t = dict.pages.contacts;
   const f = dict.footer;
+  const contact = getContact(lang);
 
   return (
     <main className="pb-24 lg:pb-32">
@@ -24,18 +27,25 @@ export default async function ContactsPage({
               {t.deanOfficeLabel}
             </p>
             <address className="mt-4 text-base not-italic leading-7 text-slate">
-              {f.addressLines.map((line) => (
+              {contact.address.value.map((line, i) => (
                 <span key={line} className="block">
                   {line}
+                  {i === contact.address.value.length - 1 && (
+                    <ReviewMark provenance={contact.address.provenance} />
+                  )}
                 </span>
               ))}
               <a
-                href={`mailto:${f.email}`}
+                href={`mailto:${contact.email.value}`}
                 className="mt-2 block text-navy transition-colors hover:text-navy/70"
               >
-                {f.email}
+                {contact.email.value}
               </a>
-              <span className="block">{f.phone}</span>
+              <ReviewMark provenance={contact.email.provenance} />
+              <span className="block">
+                {contact.phone.value}
+                <ReviewMark provenance={contact.phone.provenance} />
+              </span>
             </address>
           </div>
           <div>

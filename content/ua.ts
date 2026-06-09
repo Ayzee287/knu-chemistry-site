@@ -170,9 +170,7 @@ export const ua: Dictionary = {
   footer: {
     facultyName: "Хімічний факультет",
     university: "Київський національний університет імені Тараса Шевченка",
-    addressLines: ["вул. Гетьмана Павла Скоропадського, 12", "Київ, 01033, Україна"],
-    email: "chem@knu.ua",
-    phone: "+38 (044) 239-33-58",
+    // Контактні дані — у content/data/contacts.ts (з простежуваним джерелом).
     columns: [
       {
         title: "Наука",
