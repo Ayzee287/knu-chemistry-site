@@ -32,9 +32,19 @@ export function contentVerificationReport(): VerificationItem[] {
   ];
 }
 
-/** Only the facts that still need a human to confirm before publication. */
+/**
+ * Only the facts that still need a human to confirm before publication.
+ *
+ * That is exactly the `sourced` state: taken from a reference source but not yet
+ * independently verified. `verified` is settled; `placeholder` (honest gap) and
+ * `editorial` (framing, not a discrete fact) are not verification targets, so
+ * they are intentionally excluded — reporting them as "needs verification" would
+ * overstate the backlog.
+ */
 export function unverifiedItems(): VerificationItem[] {
-  return contentVerificationReport();
+  return contentVerificationReport().filter(
+    (i) => i.provenance.state === "sourced",
+  );
 }
 
 /** Quick health number for dashboards / reports. */
@@ -45,11 +55,16 @@ export function verificationSummary(): {
 } {
   const all = contentVerificationReport();
 
-  const verified = 0;
+  // Computed from the actual provenance state, not assumed. `verified` +
+  // `unverified` need not equal `total`: any placeholder/editorial entries in
+  // the report are tracked facts but are not verification targets (see
+  // unverifiedItems), so they count toward `total` only.
+  const verified = all.filter((i) => i.provenance.state === "verified").length;
+  const unverified = all.filter((i) => i.provenance.state === "sourced").length;
 
   return {
     total: all.length,
     verified,
-    unverified: all.length - verified,
+    unverified,
   };
 }
