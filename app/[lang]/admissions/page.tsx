@@ -1,7 +1,20 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getDictionary, isLocale, href } from "@/lib/i18n";
+import { getDictionary, isLocale, defaultLocale, href } from "@/lib/i18n";
+import { buildMetadata } from "@/lib/seo";
 import { Container } from "@/components/layout/container";
 import { PageIntro } from "@/components/layout/page-intro";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  const loc = isLocale(lang) ? lang : defaultLocale;
+  const t = getDictionary(loc).pages.admissions;
+  return buildMetadata({ lang: loc, path: "/admissions", title: t.title, description: t.lead });
+}
 
 export default async function AdmissionsPage({
   params,
