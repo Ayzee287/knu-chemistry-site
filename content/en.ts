@@ -102,20 +102,9 @@ export const en = {
     lead: "The faculty’s laboratories support synthetic, analytical, and physical chemistry — and are where students do their first real scientific work.",
     cta: "Explore laboratories",
     figureCaption: "Spectroscopy laboratory",
-    items: [
-      {
-        name: "Synthesis Laboratory",
-        focus: "Organic and inorganic preparative chemistry.",
-      },
-      {
-        name: "Analytical & Spectroscopy Laboratory",
-        focus: "Chromatography, spectroscopy, and structural analysis.",
-      },
-      {
-        name: "Physical Chemistry Laboratory",
-        focus: "Kinetics, electrochemistry, and thermal analysis.",
-      },
-    ],
+    // Specific named laboratories are intentionally NOT listed until confirmed
+    // against the faculty — they were invented. See docs/content-provenance.md.
+    note: "Individual laboratories will be listed as details are confirmed.",
   },
 
   faculty: {
@@ -129,31 +118,9 @@ export const en = {
   news: {
     eyebrow: "News & activity",
     title: "From the faculty",
-    all: "All news",
-    featured: {
-      date: "May 2026",
-      kind: "Seminar",
-      title: "Spring seminar series in physical chemistry",
-      excerpt:
-        "A series of talks on thermodynamics, kinetics, and spectroscopy, open to students across all years.",
-    },
-    items: [
-      {
-        date: "Apr 2026",
-        kind: "Admissions",
-        title: "Information session for prospective undergraduate students",
-      },
-      {
-        date: "Mar 2026",
-        kind: "Research",
-        title: "Recent publications from the analytical chemistry group",
-      },
-      {
-        date: "Feb 2026",
-        kind: "Lectures",
-        title: "Open lectures on contemporary organic synthesis",
-      },
-    ],
+    // Dated events were fabricated and have been removed; this stays an honest
+    // placeholder until a real news feed exists. See docs/content-provenance.md.
+    placeholder: "Faculty news and announcements will be published here.",
   },
 
   admissions: {
