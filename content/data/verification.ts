@@ -9,13 +9,14 @@
 //   unverifiedItems().forEach((i) => console.warn(`NEEDS_VERIFICATION: ${i.area}/${i.id}.${i.field}`));
 
 import { departments } from "./departments";
+import type { Provenance } from "@/lib/provenance";
 
 export type VerificationItem = {
   area: string;
   id: string;
   field: string;
   value: string;
-  provenance: unknown;
+  provenance: Provenance;
 };
 
 /** Every provenance-tracked fact across structured content. */
@@ -33,9 +34,7 @@ export function contentVerificationReport(): VerificationItem[] {
 
 /** Only the facts that still need a human to confirm before publication. */
 export function unverifiedItems(): VerificationItem[] {
-  return contentVerificationReport().filter(
-    (i) => !(i.provenance as any)?.verified,
-  );
+  return contentVerificationReport();
 }
 
 /** Quick health number for dashboards / reports. */
@@ -46,9 +45,7 @@ export function verificationSummary(): {
 } {
   const all = contentVerificationReport();
 
-  const verified = all.filter(
-    (i) => (i.provenance as any)?.verified,
-  ).length;
+  const verified = 0;
 
   return {
     total: all.length,
