@@ -40,7 +40,7 @@ export function Figure({
           {index}
         </span>
       ) : null}
-      <figcaption className="absolute inset-x-0 bottom-0 border-t border-navy/10 bg-ivory px-5 py-3 text-xs uppercase tracking-[0.16em] text-slate">
+      <figcaption className="absolute inset-x-0 bottom-0 border-t border-navy/10 bg-ivory px-5 py-3 text-xs uppercase leading-tight tracking-[0.16em] text-slate break-words">
         {caption}
       </figcaption>
     </figure>
