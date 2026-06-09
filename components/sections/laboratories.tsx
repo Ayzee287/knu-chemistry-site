@@ -32,14 +32,9 @@ export function Laboratories({
               {t.lead}
             </p>
 
-            <ul className="mt-8 divide-y divide-navy/10 border-t border-navy/10">
-              {t.items.map((lab) => (
-                <li key={lab.name} className="py-4">
-                  <h3 className="font-serif text-lg text-navy">{lab.name}</h3>
-                  <p className="mt-1 text-sm leading-6 text-slate">{lab.focus}</p>
-                </li>
-              ))}
-            </ul>
+            <p className="mt-8 max-w-md text-sm leading-6 text-slate">
+              {t.note}
+            </p>
 
             <a
               href={href(lang, "/research")}

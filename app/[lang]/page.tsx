@@ -45,7 +45,7 @@ export default async function HomePage({
       <Programs lang={lang} dict={dict} />
       <Laboratories lang={lang} dict={dict} />
       <Faculty lang={lang} dict={dict} />
-      <News lang={lang} dict={dict} />
+      <News dict={dict} />
       <Admissions lang={lang} dict={dict} />
     </main>
   );

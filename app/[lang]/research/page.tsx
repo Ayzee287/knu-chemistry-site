@@ -51,14 +51,9 @@ export default async function ResearchPage({
         <h2 className="mt-16 font-serif text-2xl text-navy sm:text-3xl">
           {dict.labs.title}
         </h2>
-        <ul className="mt-6 grid gap-x-10 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
-          {dict.labs.items.map((lab) => (
-            <li key={lab.name} className="border-t border-navy/10 pt-4">
-              <h3 className="font-serif text-lg text-navy">{lab.name}</h3>
-              <p className="mt-1 text-sm leading-6 text-slate">{lab.focus}</p>
-            </li>
-          ))}
-        </ul>
+        <p className="mt-6 max-w-xl text-sm leading-6 text-slate">
+          {dict.labs.note}
+        </p>
       </Container>
     </main>
   );
