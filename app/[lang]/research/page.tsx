@@ -23,9 +23,9 @@ export default async function ResearchPage({
           {departments.map((dept) => (
             <li
               key={dept.id}
-              className="flex flex-col gap-1 py-6 sm:flex-row sm:items-baseline sm:gap-10"
+              className="flex flex-col gap-1 py-6 md:flex-row md:items-baseline md:gap-10"
             >
-              <span className="font-serif text-2xl text-navy sm:basis-1/3">
+              <span className="font-serif text-2xl text-navy md:basis-1/3">
                 {dept.name}
               </span>
               <span className="flex-1 text-sm leading-6 text-slate">

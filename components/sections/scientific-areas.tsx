@@ -39,12 +39,12 @@ export function ScientificAreas({
             <li key={dept.id}>
               <a
                 href={href(lang, "/departments")}
-                className="group -mx-4 flex flex-col gap-1 rounded-sm px-4 py-6 transition-colors hover:bg-navy/[0.03] sm:flex-row sm:items-baseline sm:gap-8"
+                className="group -mx-4 flex flex-col gap-1 rounded-sm px-4 py-6 transition-colors hover:bg-navy/[0.03] md:flex-row md:items-baseline md:gap-8"
               >
-                <span className="font-serif text-sm tabular-nums text-navy/35 sm:w-8 sm:pt-1">
+                <span className="font-serif text-sm tabular-nums text-navy/35 md:w-8 md:pt-1">
                   {NUMERAL[i]}
                 </span>
-                <span className="font-serif text-2xl text-navy sm:basis-[32%] sm:text-3xl">
+                <span className="font-serif text-2xl text-navy md:basis-[32%] md:text-3xl">
                   {dept.name}
                 </span>
                 <span className="flex-1 text-sm leading-6 text-slate">
@@ -52,7 +52,7 @@ export function ScientificAreas({
                 </span>
                 <span
                   aria-hidden
-                  className="hidden text-slate transition-transform group-hover:translate-x-0.5 sm:inline"
+                  className="hidden text-slate transition-transform group-hover:translate-x-0.5 md:inline"
                 >
                   →
                 </span>

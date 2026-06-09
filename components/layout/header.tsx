@@ -25,7 +25,7 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           </Link>
 
           <div className="flex items-center gap-6 lg:gap-8">
-            <nav className="hidden md:block" aria-label={dict.ui.primaryNav}>
+            <nav className="hidden lg:block" aria-label={dict.ui.primaryNav}>
               <ul className="flex items-center gap-6 text-sm text-slate lg:gap-7">
                 {dict.nav.map((item) => {
                   const active = isActive(item.href);
@@ -51,7 +51,7 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             {/* Language switcher — preserves the current page */}
             <nav
               aria-label={dict.ui.languageNav}
-              className="hidden items-center gap-2 text-xs uppercase tracking-[0.12em] md:flex"
+              className="hidden items-center gap-2 text-xs uppercase tracking-[0.12em] lg:flex"
             >
               {locales.map((loc, i) => (
                 <span key={loc} className="flex items-center gap-2">
@@ -72,7 +72,7 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             </nav>
 
             {/* Mobile */}
-            <details className="relative md:hidden">
+            <details className="relative lg:hidden">
               <summary className="flex cursor-pointer list-none items-center text-sm text-navy [&::-webkit-details-marker]:hidden">
                 {dict.ui.menu}
               </summary>

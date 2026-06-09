@@ -53,7 +53,7 @@ export function Faculty({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         </div>
 
         {/* Department heads — equal hierarchy, equal visual mass */}
-        <ul className="mt-12 grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-3 lg:grid-cols-5">
+        <ul className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-x-8 md:grid-cols-3 lg:grid-cols-5">
           {departments.map((dept) => (
             <li key={dept.id}>
               <Figure caption={dept.name} ratio="aspect-[4/5]" />
