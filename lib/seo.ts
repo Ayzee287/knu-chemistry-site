@@ -1,10 +1,21 @@
 import type { Metadata } from "next";
-import { locales, defaultLocale, hreflang, ogLocale, type Locale } from "@/lib/i18n";
+import {
+  locales,
+  defaultLocale,
+  getDictionary,
+  hreflang,
+  ogLocale,
+  type Locale,
+} from "@/lib/i18n";
 
 // Per-page metadata builder. Metadata in Next is shallowly merged and a layout's
 // `alternates`/`openGraph` are *inherited wholesale* by child pages — so canonical
 // and hreflang MUST be set per page, or every sub-page points at the home page.
 // This builder produces correct, locale-aware metadata from one place.
+//
+// Titles are composed here as absolute strings with the LOCALISED brand suffix
+// (dict.brand.short), not via the root layout's title template — the template is
+// locale-agnostic and would append the English brand to Ukrainian page titles.
 
 const SITE_NAME = "KNU Chemistry";
 
@@ -52,9 +63,12 @@ export function buildMetadata({
   const alternateLocales = locales
     .filter((loc) => loc !== lang)
     .map((loc) => ogLocale[loc]);
+  const brand = getDictionary(lang).brand.short;
 
   return {
-    title: absoluteTitle ? { absolute: title } : title,
+    title: {
+      absolute: absoluteTitle ? title : `${title} — ${brand}`,
+    },
     description,
     alternates: {
       canonical: url,
