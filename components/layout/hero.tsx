@@ -7,7 +7,9 @@ export function Hero({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   return (
     <section className="bg-ivory">
       <Container>
-        <div className="grid gap-10 pt-12 sm:pt-16 lg:grid-cols-2 lg:items-center lg:gap-16 lg:pt-20">
+        {/* Text-biased columns: the institutional statement carries the hero;
+            the reserved plate supports it rather than splitting it 50/50. */}
+        <div className="grid gap-10 pt-12 sm:pt-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16 lg:pt-20">
           <div className="flex flex-col">
             <div className="flex items-center gap-3">
               <span className="h-px w-10 bg-gold" />

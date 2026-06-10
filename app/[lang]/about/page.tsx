@@ -36,7 +36,8 @@ export default async function AboutPage({
     <main className="pb-24 lg:pb-32">
       <PageIntro eyebrow={t.eyebrow} title={t.title} lead={t.lead} />
       <Container>
-        <div className="mt-12 max-w-2xl space-y-6 border-t border-navy/10 pt-10">
+        {/* max-w-xl: body text at a comfortable measure (~70 characters). */}
+        <div className="mt-12 max-w-xl space-y-6 border-t border-navy/10 pt-10">
           {t.body.map((para) => (
             <p key={para} className="text-pretty text-base leading-7 text-slate">
               {para}
