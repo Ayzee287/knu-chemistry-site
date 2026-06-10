@@ -15,7 +15,8 @@ export function Programs({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           {t.title}
         </h2>
 
-        <div className="mt-10 flex flex-col gap-10 md:gap-0">
+        {/* Hairline separators echo the scientific-areas list — one shared rhythm. */}
+        <div className="mt-10 flex flex-col gap-10 md:gap-0 md:divide-y md:divide-navy/10 md:border-y md:border-navy/10">
           {t.items.map((program) => (
             <div
               key={program.title}

@@ -78,19 +78,27 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               </summary>
               <nav
                 aria-label={dict.ui.primaryNav}
-                className="absolute right-0 top-full mt-3 w-56 border border-navy/10 bg-ivory p-2"
+                className="absolute right-0 top-full mt-3 w-56 border border-navy/10 bg-ivory p-2 shadow-lg shadow-navy/[0.08]"
               >
                 <ul className="flex flex-col">
-                  {dict.nav.map((item) => (
-                    <li key={item.href}>
-                      <Link
-                        href={href(lang, item.href)}
-                        className="block px-3 py-2 text-sm text-slate transition-colors hover:text-navy"
-                      >
-                        {item.label}
-                      </Link>
-                    </li>
-                  ))}
+                  {dict.nav.map((item) => {
+                    const active = isActive(item.href);
+                    return (
+                      <li key={item.href}>
+                        <Link
+                          href={href(lang, item.href)}
+                          aria-current={active ? "page" : undefined}
+                          className={`block px-3 py-2 text-sm transition-colors ${
+                            active
+                              ? "font-medium text-navy"
+                              : "text-slate hover:text-navy"
+                          }`}
+                        >
+                          {item.label}
+                        </Link>
+                      </li>
+                    );
+                  })}
                   <li className="mt-1 flex gap-4 border-t border-navy/10 px-3 pt-3 text-xs uppercase tracking-[0.12em]">
                     {locales.map((loc) => (
                       <Link

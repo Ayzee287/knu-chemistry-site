@@ -4,7 +4,8 @@ import { href, type Locale, type Dictionary } from "@/lib/i18n";
 
 const NUMERAL = ["I", "II", "III", "IV", "V"];
 
-// Identity: taxonomic index — a scannable catalogue of the discipline.
+// Identity: taxonomic index — a scannable catalogue of the discipline. Sits on
+// the sand band: the first tonal beat in the page's ivory → sand → navy cadence.
 export function ScientificAreas({
   lang,
   dict,
@@ -15,7 +16,7 @@ export function ScientificAreas({
   const t = dict.areas;
   const departments = getDepartments(lang);
   return (
-    <section className="py-20 sm:py-24 lg:py-28">
+    <section className="bg-sand py-20 sm:py-24 lg:py-28">
       <Container>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
@@ -40,7 +41,7 @@ export function ScientificAreas({
               {/* Deep-link to the department's own row on /departments. */}
               <a
                 href={`${href(lang, "/departments")}#${dept.id}`}
-                className="group -mx-4 flex flex-col gap-1 rounded-sm px-4 py-6 transition-colors hover:bg-navy/[0.03] md:flex-row md:items-baseline md:gap-8"
+                className="group -mx-4 flex flex-col gap-1 rounded-sm px-4 py-6 transition-colors hover:bg-navy/[0.04] md:flex-row md:items-baseline md:gap-8"
               >
                 <span className="font-serif text-sm tabular-nums text-navy/35 md:w-8 md:pt-1">
                   {NUMERAL[i]}

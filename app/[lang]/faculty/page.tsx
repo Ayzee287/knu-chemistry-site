@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getDictionary, isLocale, defaultLocale } from "@/lib/i18n";
+import { getDictionary, isLocale, defaultLocale, href } from "@/lib/i18n";
 import { buildMetadata } from "@/lib/seo";
 import { getDepartments } from "@/content/data/departments";
 import { placeholder } from "@/lib/provenance";
@@ -32,6 +32,7 @@ export default async function FacultyPage({
   const dict = getDictionary(lang);
   const t = dict.pages.faculty;
   const departments = getDepartments(lang);
+  const departmentsNav = dict.nav.find((item) => item.href === "/departments");
 
   return (
     <main className="pb-24 lg:pb-32">
@@ -89,6 +90,24 @@ export default async function FacultyPage({
         <p className="mt-10 max-w-xl text-sm leading-6 text-slate">
           {t.rosterNote}
         </p>
+
+        {/* Onward path — the roster is organised by department; link there. */}
+        {departmentsNav && (
+          <p className="mt-6">
+            <a
+              href={href(lang, departmentsNav.href)}
+              className="group inline-flex items-center gap-2 text-sm font-medium text-navy transition-colors hover:text-navy/70"
+            >
+              {departmentsNav.label}
+              <span
+                aria-hidden
+                className="transition-transform group-hover:translate-x-0.5"
+              >
+                →
+              </span>
+            </a>
+          </p>
+        )}
       </Container>
     </main>
   );

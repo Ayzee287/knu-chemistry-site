@@ -10,7 +10,10 @@ import type { Dictionary } from "@/lib/i18n";
 export function News({ dict }: { dict: Dictionary }) {
   const t = dict.news;
   return (
-    <section className="py-20 sm:py-24 lg:py-28">
+    // Compressed rhythm (like research-highlight): placeholder-level content
+    // should not occupy a full-weight band. Restore section padding when a
+    // real feed exists.
+    <section className="py-16 sm:py-20 lg:py-24">
       <Container>
         <p className="text-xs uppercase tracking-[0.2em] text-slate">
           {t.eyebrow}
