@@ -18,7 +18,9 @@ export function PageIntro({
         <h1 className="mt-4 text-balance font-serif text-4xl font-medium leading-[1.1] tracking-tight text-navy sm:text-5xl">
           {title}
         </h1>
-        <p className="mt-6 max-w-2xl text-pretty text-lg leading-8 text-slate">
+        {/* max-w-xl keeps the lead inside a comfortable reading measure
+            (~65–70 characters) under the wider title. */}
+        <p className="mt-6 max-w-xl text-pretty text-lg leading-8 text-slate">
           {lead}
         </p>
       </div>

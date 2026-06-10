@@ -147,7 +147,6 @@ export const ua: Dictionary = {
         title: "Наука",
         links: [
           { label: "Напрями досліджень", href: "/research" },
-          { label: "Кафедри", href: "/departments" },
           { label: "Викладачі", href: "/faculty" },
         ],
       },
