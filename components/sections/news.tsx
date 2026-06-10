@@ -1,9 +1,12 @@
 import { Container } from "@/components/layout/container";
+import { ExternalLink } from "@/components/ui/external-link";
+import { SOURCES } from "@/lib/provenance";
 import type { Dictionary } from "@/lib/i18n";
 
 // Identity: temporal, lighter. Honest placeholder — the faculty has no published
 // news feed yet, so this section makes NO dated claims (the previous invented
-// events were removed). See docs/content-provenance.md.
+// events were removed). Until a real feed exists, the section points readers at
+// the official faculty site instead of sitting empty. See docs/content-provenance.md.
 export function News({ dict }: { dict: Dictionary }) {
   const t = dict.news;
   return (
@@ -17,6 +20,15 @@ export function News({ dict }: { dict: Dictionary }) {
         </h2>
         <p className="mt-6 max-w-md text-base leading-7 text-slate">
           {t.placeholder}
+        </p>
+        <p className="mt-4">
+          <ExternalLink
+            href={SOURCES.chemKnu.url}
+            newTabNote={dict.ui.opensInNewTab}
+            className="text-sm font-medium text-slate transition-colors hover:text-navy"
+          >
+            {dict.ui.officialFacultySite}
+          </ExternalLink>
         </p>
       </Container>
     </section>

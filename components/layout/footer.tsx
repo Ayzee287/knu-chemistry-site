@@ -1,6 +1,8 @@
 import { Container } from "@/components/layout/container";
+import { ExternalLink } from "@/components/ui/external-link";
 import { ReviewMark } from "@/components/ui/review-mark";
 import { getContact } from "@/content/data/contacts";
+import { SOURCES } from "@/lib/provenance";
 import { href, type Locale, type Dictionary } from "@/lib/i18n";
 
 export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
@@ -36,6 +38,15 @@ export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 <ReviewMark provenance={contact.phone.provenance} />
               </span>
             </address>
+            <p className="mt-5">
+              <ExternalLink
+                href={SOURCES.chemKnu.url}
+                newTabNote={dict.ui.opensInNewTab}
+                className="text-sm text-slate transition-colors hover:text-navy"
+              >
+                {dict.ui.officialFacultySite}
+              </ExternalLink>
+            </p>
           </div>
 
           {t.columns.map((col) => (

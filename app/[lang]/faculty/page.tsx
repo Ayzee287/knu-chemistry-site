@@ -65,7 +65,12 @@ export default async function FacultyPage({
               <p className="mt-4 text-xs uppercase tracking-[0.16em] text-slate">
                 {dict.ui.headOfDepartment}
               </p>
-              <h3 className="mt-1 font-serif text-lg text-navy">
+              {/* A withheld head renders muted + italic, like the Dean placeholder. */}
+              <h3
+                className={`mt-1 font-serif text-lg ${
+                  dept.head.title ? "text-navy" : "italic text-navy/60"
+                }`}
+              >
                 {dept.head.name}
                 {!dept.head.title && (
                   <ReviewMark provenance={dept.head.provenance} />

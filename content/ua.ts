@@ -19,6 +19,9 @@ export const ua: Dictionary = {
     headOfDepartment: "Завідувач кафедри",
     dean: "Декан факультету",
     deanNamePending: "Ім’я уточнюється",
+    officialDepartmentSite: "Офіційний сайт кафедри",
+    officialFacultySite: "Офіційний сайт факультету",
+    opensInNewTab: "відкриється в новій вкладці",
   },
 
   brand: { short: "Хімічний факультет" },

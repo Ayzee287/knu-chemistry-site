@@ -9,6 +9,7 @@
 //   unverifiedItems().forEach((i) => console.warn(`NEEDS_VERIFICATION: ${i.area}/${i.id}.${i.field}`));
 
 import { departments } from "./departments";
+import { contact } from "./contacts";
 import type { Provenance } from "@/lib/provenance";
 
 export type VerificationItem = {
@@ -29,6 +30,34 @@ export function contentVerificationReport(): VerificationItem[] {
       value: `${d.head.value.name.en} — ${d.head.value.title.en}`,
       provenance: d.head.provenance,
     })),
+    ...departments.map((d) => ({
+      area: "departments",
+      id: d.id,
+      field: "site",
+      value: d.site.value,
+      provenance: d.site.provenance,
+    })),
+    {
+      area: "contacts",
+      id: "faculty",
+      field: "address",
+      value: contact.address.value.en.join(", "),
+      provenance: contact.address.provenance,
+    },
+    {
+      area: "contacts",
+      id: "faculty",
+      field: "email",
+      value: contact.email.value,
+      provenance: contact.email.provenance,
+    },
+    {
+      area: "contacts",
+      id: "faculty",
+      field: "phone",
+      value: contact.phone.value,
+      provenance: contact.phone.provenance,
+    },
   ];
 }
 
