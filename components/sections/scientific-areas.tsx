@@ -37,8 +37,9 @@ export function ScientificAreas({
         <ul className="mt-12 divide-y divide-navy/10 border-y border-navy/10">
           {departments.map((dept, i) => (
             <li key={dept.id}>
+              {/* Deep-link to the department's own row on /departments. */}
               <a
-                href={href(lang, "/departments")}
+                href={`${href(lang, "/departments")}#${dept.id}`}
                 className="group -mx-4 flex flex-col gap-1 rounded-sm px-4 py-6 transition-colors hover:bg-navy/[0.03] md:flex-row md:items-baseline md:gap-8"
               >
                 <span className="font-serif text-sm tabular-nums text-navy/35 md:w-8 md:pt-1">

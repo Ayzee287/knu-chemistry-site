@@ -3,10 +3,12 @@ import { notFound } from "next/navigation";
 
 import { Container } from "@/components/layout/container";
 import { PageIntro } from "@/components/layout/page-intro";
+import { ExternalLink } from "@/components/ui/external-link";
 import { ReviewMark } from "@/components/ui/review-mark";
 
 import { getDictionary, isLocale, defaultLocale } from "@/lib/i18n";
 import { getContact } from "@/content/data/contacts";
+import { SOURCES } from "@/lib/provenance";
 import { buildMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
@@ -69,6 +71,15 @@ export default async function ContactsPage({
             </p>
             <p className="mt-4 max-w-sm text-base leading-7 text-slate">
               {f.university}
+            </p>
+            <p className="mt-5">
+              <ExternalLink
+                href={SOURCES.chemKnu.url}
+                newTabNote={dict.ui.opensInNewTab}
+                className="text-sm text-slate transition-colors hover:text-navy"
+              >
+                {dict.ui.officialFacultySite}
+              </ExternalLink>
             </p>
           </div>
         </div>

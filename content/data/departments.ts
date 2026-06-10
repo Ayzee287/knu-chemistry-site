@@ -5,6 +5,7 @@ import {
   editorial,
   fromChemKnu,
   placeholder,
+  sourced,
   type Claim,
   type Localised,
   type Provenance,
@@ -27,7 +28,29 @@ export type Department = {
   research: Localised;
   provenance: Provenance;
   head: Claim<Leadership>;
+  /**
+   * Official departmental website (operator-provided, 2026-06-10). A
+   * supplementary authority reference — the internal pages remain the primary
+   * experience. URLs are navigational, low-stakes claims (like contacts) and
+   * are rendered regardless of verification state.
+   */
+  site: Claim<string>;
 };
+
+// Official department URLs as provided by the operator. Four of the five were
+// confirmed reachable and self-identifying as the expected KNU department on
+// 2026-06-10; physchem.knu.ua is a legacy frame-based site that could not be
+// programmatically confirmed — noted per claim.
+const officialSite = (url: string, note?: string): Claim<string> =>
+  claim(
+    url,
+    sourced(
+      url,
+      "2026-06-10",
+      note ??
+        "Operator-provided official departmental site; reachable and self-identifying as the department on retrieval.",
+    ),
+  );
 
 // Leadership sourced from chem.knu.ua's published structure. Verify each name,
 // title and current post against the faculty before treating as authoritative.
@@ -55,6 +78,7 @@ export const departments: Department[] = [
       },
       fromChemKnu(leadershipNote),
     ),
+    site: officialSite("https://inorgchem.knu.ua/ua/"),
   },
   {
     id: "organic",
@@ -71,6 +95,7 @@ export const departments: Department[] = [
       },
       fromChemKnu(leadershipNote),
     ),
+    site: officialSite("https://orgchem.knu.ua/"),
   },
   {
     id: "analytical",
@@ -87,6 +112,7 @@ export const departments: Department[] = [
       },
       fromChemKnu(`${leadershipNote} Rank "доцент / д.х.н." pairing is unusual — confirm.`),
     ),
+    site: officialSite("https://anchem.knu.ua/"),
   },
   {
     id: "physical",
@@ -108,6 +134,10 @@ export const departments: Department[] = [
         `${leadershipNote} "Corr. Member, NAS of Ukraine" is a hard honour claim — confirm against the NAS register.`,
       ),
     ),
+    site: officialSite(
+      "https://physchem.knu.ua/index_ua.html",
+      "Operator-provided official departmental site; legacy frame-based site could not be programmatically confirmed — verify manually.",
+    ),
   },
   {
     id: "macromolecular",
@@ -124,6 +154,7 @@ export const departments: Department[] = [
       },
       fromChemKnu(leadershipNote),
     ),
+    site: officialSite("https://macrochem.knu.ua/"),
   },
 ];
 
@@ -135,6 +166,8 @@ export type LocalisedDepartment = {
   // title is null when the head is withheld (unverified) — the render sites use
   // that to drop the title line and show only the placeholder name.
   head: { name: string; title: string | null; provenance: Provenance };
+  /** Official departmental website URL (external). */
+  site: string;
 };
 
 // Honest stand-in for an unverified head, mirroring the Dean placeholder in the
@@ -160,6 +193,7 @@ export function getDepartments(lang: Locale): LocalisedDepartment[] {
             provenance: d.head.provenance,
           }
         : { name: headPending[lang], title: null, provenance: headWithheld },
+      site: d.site.value,
     };
   });
 }

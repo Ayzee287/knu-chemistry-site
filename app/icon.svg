@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Institutional mark: benzene ring on academic navy. Palette = design tokens
+       (navy #14254a, ivory #f4f0e8, gold #c9a227). -->
+  <rect width="64" height="64" rx="12" fill="#14254a"/>
+  <polygon
+    points="32,15 46.7,23.5 46.7,40.5 32,49 17.3,40.5 17.3,23.5"
+    fill="none" stroke="#f4f0e8" stroke-width="3.5" stroke-linejoin="round"/>
+  <circle cx="32" cy="32" r="9" fill="none" stroke="#c9a227" stroke-width="2.25"/>
+</svg>

@@ -17,6 +17,9 @@ export const en = {
     headOfDepartment: "Head of department",
     dean: "Dean of the Faculty",
     deanNamePending: "Name to be confirmed",
+    officialDepartmentSite: "Official department website",
+    officialFacultySite: "Official faculty website",
+    opensInNewTab: "opens in a new tab",
   },
 
   brand: { short: "KNU Chemistry" },

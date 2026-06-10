@@ -5,6 +5,7 @@ import { buildMetadata } from "@/lib/seo";
 import { getDepartments } from "@/content/data/departments";
 import { Container } from "@/components/layout/container";
 import { PageIntro } from "@/components/layout/page-intro";
+import { ExternalLink } from "@/components/ui/external-link";
 import { ReviewMark } from "@/components/ui/review-mark";
 
 export async function generateMetadata({
@@ -37,7 +38,8 @@ export default async function DepartmentsPage({
           {departments.map((dept) => (
             <li
               key={dept.id}
-              className="grid gap-4 py-8 lg:grid-cols-[1fr_1.4fr] lg:gap-16"
+              id={dept.id}
+              className="grid scroll-mt-24 gap-4 py-8 lg:grid-cols-[1fr_1.4fr] lg:gap-16"
             >
               <div>
                 <h2 className="font-serif text-2xl text-navy sm:text-3xl">
@@ -46,7 +48,12 @@ export default async function DepartmentsPage({
                 <p className="mt-3 text-xs uppercase tracking-[0.16em] text-slate">
                   {dict.ui.headOfDepartment}
                 </p>
-                <p className="mt-1 text-sm text-navy/80">
+                {/* A withheld head renders muted + italic, like the Dean placeholder. */}
+                <p
+                  className={`mt-1 text-sm ${
+                    dept.head.title ? "text-navy/80" : "italic text-navy/55"
+                  }`}
+                >
                   {dept.head.name}
                   {!dept.head.title && (
                     <ReviewMark provenance={dept.head.provenance} />
@@ -58,6 +65,15 @@ export default async function DepartmentsPage({
                     <ReviewMark provenance={dept.head.provenance} />
                   </p>
                 )}
+                <p className="mt-5">
+                  <ExternalLink
+                    href={dept.site}
+                    newTabNote={dict.ui.opensInNewTab}
+                    className="text-sm text-slate transition-colors hover:text-navy"
+                  >
+                    {dict.ui.officialDepartmentSite}
+                  </ExternalLink>
+                </p>
               </div>
               <p className="max-w-xl text-pretty text-base leading-7 text-slate">
                 {dept.research}
