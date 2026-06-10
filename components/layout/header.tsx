@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Container } from "@/components/layout/container";
@@ -12,6 +13,14 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 
   const isActive = (path: string) =>
     rest === path || (path !== "" && rest.startsWith(`${path}/`));
+
+  // The header lives in a persistent layout, so an open mobile <details> menu
+  // would survive client-side navigation and keep covering the new page.
+  // Close it whenever the route changes.
+  const menuRef = useRef<HTMLDetailsElement>(null);
+  useEffect(() => {
+    menuRef.current?.removeAttribute("open");
+  }, [pathname]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-navy/10 bg-ivory">
@@ -72,9 +81,15 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             </nav>
 
             {/* Mobile */}
-            <details className="relative lg:hidden">
-              <summary className="flex cursor-pointer list-none items-center text-sm text-navy [&::-webkit-details-marker]:hidden">
+            <details ref={menuRef} className="group relative lg:hidden">
+              <summary className="flex cursor-pointer list-none items-center gap-1.5 text-sm text-navy [&::-webkit-details-marker]:hidden">
                 {dict.ui.menu}
+                <span
+                  aria-hidden
+                  className="text-[0.55rem] text-slate transition-transform duration-200 group-open:rotate-180"
+                >
+                  ▼
+                </span>
               </summary>
               <nav
                 aria-label={dict.ui.primaryNav}

@@ -144,7 +144,6 @@ export const en = {
         title: "Research",
         links: [
           { label: "Research areas", href: "/research" },
-          { label: "Departments", href: "/departments" },
           { label: "Faculty", href: "/faculty" },
         ],
       },
