@@ -72,10 +72,11 @@ export function Hero({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           </div>
           <div>
             <dt className="text-xs uppercase tracking-[0.18em] text-slate">
-              {t.metaLocationLabel}
+              {t.metaUniversityLabel}
             </dt>
             <dd className="mt-2 text-sm leading-6 text-navy/80">
-              {t.metaLocation}
+              {t.metaUniversity}
+              <span className="block text-slate">{t.metaLocation}</span>
             </dd>
           </div>
         </dl>
