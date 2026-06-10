@@ -28,8 +28,9 @@ const inter = Inter({
 
 // `metadataBase` is set once here so every page can declare canonical / hreflang /
 // OpenGraph URLs as relative paths that resolve against the real production origin.
-// `title.template` gives sub-pages a consistent "<page> — KNU Chemistry" suffix;
-// the home page opts out via `title.absolute`.
+// Locale pages compose their own absolute titles with the LOCALISED brand suffix
+// in lib/seo.ts buildMetadata; the `title.template` here only covers non-locale
+// surfaces (e.g. the bilingual 404 page).
 export const metadata: Metadata = {
   metadataBase: siteUrl,
   title: {

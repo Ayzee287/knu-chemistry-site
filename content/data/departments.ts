@@ -102,7 +102,7 @@ export const departments: Department[] = [
     name: { ua: "Аналітична хімія", en: "Analytical Chemistry" },
     research: {
       ua: "Аналітичні методи та хімічний контроль об’єктів довкілля.",
-      en: "Analytical methods and chemical control of environmental objects.",
+      en: "Analytical methods and chemical monitoring of the environment.",
     },
     provenance: editorial(),
     head: claim(
@@ -144,7 +144,7 @@ export const departments: Department[] = [
     name: { ua: "Високомолекулярна хімія", en: "Macromolecular Chemistry" },
     research: {
       ua: "Синтез і дослідження високомолекулярних сполук.",
-      en: "Synthesis and study of macromolecular and high-molecular compounds.",
+      en: "Synthesis and study of macromolecular compounds.",
     },
     provenance: editorial(),
     head: claim(

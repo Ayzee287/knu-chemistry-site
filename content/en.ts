@@ -12,7 +12,7 @@ export const en = {
   ui: {
     menu: "Menu",
     skip: "Skip to content",
-    primaryNav: "Primary",
+    primaryNav: "Primary navigation",
     languageNav: "Language",
     headOfDepartment: "Head of department",
     dean: "Dean of the Faculty",
@@ -41,7 +41,7 @@ export const en = {
     ctaPrograms: "Admissions",
     metaAreasLabel: "Departments",
     metaAreas: "Inorganic · Organic · Analytical · Physical · Macromolecular",
-    metaProgramsLabel: "Programs",
+    metaProgramsLabel: "Programmes",
     metaPrograms: "Bachelor’s · Master’s · PhD",
     metaUniversityLabel: "University",
     metaUniversity: "Taras Shevchenko National University of Kyiv",
@@ -75,8 +75,10 @@ export const en = {
     all: "All research areas",
   },
 
+  // EN follows British academic spelling throughout (programme, organised,
+  // centre) — keep new strings consistent with that convention.
   programs: {
-    eyebrow: "Programs",
+    eyebrow: "Programmes",
     title: "Study chemistry at every level",
     items: [
       {
@@ -174,7 +176,7 @@ export const en = {
     departments: {
       eyebrow: "Departments",
       title: "Five departments of chemistry",
-      lead: "The faculty is organised into five departments, each led by a head and responsible for teaching and research in its area.",
+      lead: "The faculty is organised into five departments, each led by its head of department and responsible for teaching and research in its area.",
     },
     research: {
       eyebrow: "Research",
